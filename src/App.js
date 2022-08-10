@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import Layout from './components/Layout.js';
+import CharStats from './components/CharStats';
+import Enemy from './components/Enemy';
+import Zone from './components/Zone';
+import generateZone from './scripts/generateZone';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <div style={{ fontSize: 22 }}>TURN BASED ADVENTURE</div>
+      <CharStats />
+      <Enemy />
+      <Zone zone={generateZone()} />
+    </Layout>
   );
 }
 
