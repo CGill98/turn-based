@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { PlayerContext } from '../components/contexts/PlayerContext';
 import { getConnectedRooms } from '../scripts/generateZone';
 
@@ -22,6 +22,7 @@ const styles = {
 };
 
 export default function Zone({ zone }) {
+	const [selectedCell, setSelectedCell] = useState(null);
 	const { state: player } = useContext(PlayerContext);
 	//to import:
 	// const zone = [
@@ -76,6 +77,7 @@ export default function Zone({ zone }) {
 							style={styles.td(cell, player)}
 							onMouseOver={e => tdMouseOver(e, cell)}
 							onMouseLeave={e => tdMouseLeave(e, cell)}
+							onClick={() => setSelectedCell(cell)}
 						>
 							{player.pos.x === j && player.pos.y === i && (
 								<div
@@ -117,6 +119,19 @@ export default function Zone({ zone }) {
 								/>
 							)}
 							{cell.enemy && (
+								<div
+									style={{
+										width: 10,
+										height: 10,
+										backgroundColor: 'purple',
+										zIndex: 1,
+										position: 'absolute',
+										left: 67,
+										top: 0,
+									}}
+								/>
+							)}
+							{cell.id === selectedCell?.id && (
 								<div
 									style={{
 										width: 10,
