@@ -1,7 +1,12 @@
+import { useContext } from 'react';
 import stats from '../constants/character.js';
+import { PlayerContext } from '../components/contexts/PlayerContext';
 
 export default function CharStats() {
-	console.log(stats);
+	// console.log(stats);
+	const { state: player } = useContext(PlayerContext);
+	console.log(player);
+	// s[1]('ajajajaj');
 	return (
 		<div
 			style={{
@@ -11,11 +16,11 @@ export default function CharStats() {
 				width: 200,
 			}}
 		>
-			<div>Character Stats</div>
-			<div>Health {stats.health}</div>
-			<div>Endurance {stats.endurance}</div>
-			<div>Strength {stats.strength}</div>
-			<div>Intelligence {stats.intelligence}</div>
+			<div>Character Stats: {player.name}</div>
+			<div>Health {player.stats.health}</div>
+			<div>Endurance {player.stats.endurance}</div>
+			<div>Strength {player.stats.strength}</div>
+			<div>Intelligence {player.stats.intelligence}</div>
 		</div>
 	);
 }

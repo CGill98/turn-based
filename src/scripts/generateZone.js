@@ -17,7 +17,7 @@ function getConnected(cell, zone) {
 }
 
 //get the cells directly connected, neighbours but not walls
-function getConnectedRooms(cell, zone) {
+export function getConnectedRooms(cell, zone) {
 	const connected = [];
 	const row = zone.find(row => row.find(c => c.id === cell.id));
 	const cellX = row.findIndex(c => c.id === cell.id);
@@ -197,7 +197,7 @@ export default function generateZone() {
 			row.map(cell => (cell.id === newCell.id ? newCell : cell))
 		);
 		if (newCell) path.push(newCell);
-		console.log(path);
+		// console.log(path);
 	}
 
 	return zone;
